@@ -10,7 +10,8 @@ def SaveCategories():
             data.append([category.name, category.path, " ".join(category.filetypes)])
         writer.writerows(data)
 def ReadCategories():
-    with open("categories.csv", "r", newline="") as file:
+    with open("categories.csv", "a+", newline="") as file:
+        file.seek(0)
         reader = csv.reader(file)
         for row in reader:
             readCategory = Category(row[0],row[1])
